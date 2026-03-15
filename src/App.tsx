@@ -386,8 +386,11 @@ const AIPlanner = () => {
 
   return (
     <section id="planner" className="py-24 bg-[#1a0505] relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-red-900/40 to-red-950/40 rounded-[2.5rem] p-1 border border-white/10 shadow-2xl">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-[120px]"></div>
+      </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="bg-gradient-to-br from-[#D4AF37]/30 via-[#996515]/20 to-[#D4AF37]/30 rounded-[2.5rem] p-1 border border-[#D4AF37]/30 shadow-[0_0_50px_rgba(212,175,55,0.15)]">
           <div className="bg-[#1a0505] rounded-[2.4rem] overflow-hidden flex flex-col h-[700px]">
             {/* Header */}
             <div className="p-6 border-b border-white/10 flex flex-col gap-6 bg-white/5">
@@ -678,7 +681,15 @@ const Contact = () => {
 
 const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isOpen: boolean, onClose: () => void, planType: string, basePrice: number }) => {
   const [selectedMeals, setSelectedMeals] = useState<string[]>(['lunch']);
+  const [selectedLocation, setSelectedLocation] = useState<string>('Delhi');
   const upiId = "9650254164@kotak";
+
+  const locations = ['Delhi', 'Noida', 'Faridabad'];
+  
+  const isNonVeg = planType === 'Non-Veg';
+  const isEgg = planType === 'Egg';
+  const themeColor = isNonVeg ? 'red' : isEgg ? 'yellow' : 'emerald';
+  const themeHex = isNonVeg ? '#ef4444' : isEgg ? '#eab308' : '#10b981';
 
   const meals = [
     { id: 'breakfast', label: 'Breakfast', icon: <Clock size={18} /> },
@@ -732,11 +743,30 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
               <X size={24} />
             </button>
 
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-${themeColor}-500 to-blue-500`}></div>
             
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Customize Your Plan</h3>
-            <p className="text-emerald-400 text-sm font-medium mb-4 sm:mb-6">{planType} Service</p>
+            <p className={`text-${themeColor}-400 text-sm font-medium mb-4 sm:mb-6`}>{planType} Service</p>
             
+            <div className="space-y-3 mb-6">
+              <div className="text-xs text-gray-400 mb-1 font-medium uppercase tracking-wider">Select Delivery Location (Mandatory)</div>
+              <div className="grid grid-cols-3 gap-2">
+                {locations.map((loc) => (
+                  <button
+                    key={loc}
+                    onClick={() => setSelectedLocation(loc)}
+                    className={`py-2 px-1 rounded-xl border text-[10px] font-bold transition-all ${
+                      selectedLocation === loc
+                        ? `bg-${themeColor}-500 border-${themeColor}-500 text-white shadow-lg shadow-${themeColor}-500/20`
+                        : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
+                    }`}
+                  >
+                    {loc}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
               <div className="text-xs text-gray-400 mb-1 font-medium uppercase tracking-wider">Select Meals (Add to Cart)</div>
               {meals.map((meal) => (
@@ -745,18 +775,18 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
                   onClick={() => toggleMeal(meal.id)}
                   className={`w-full flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all ${
                     selectedMeals.includes(meal.id)
-                      ? 'bg-emerald-500/20 border-emerald-500 text-white'
+                      ? `bg-${themeColor}-500/20 border-${themeColor}-500 text-white`
                       : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`${selectedMeals.includes(meal.id) ? 'text-emerald-400' : 'text-gray-500'}`}>
+                    <div className={`${selectedMeals.includes(meal.id) ? `text-${themeColor}-400` : 'text-gray-500'}`}>
                       {meal.icon}
                     </div>
                     <span className="font-bold">{meal.label}</span>
                   </div>
                   {selectedMeals.includes(meal.id) ? (
-                    <div className="bg-emerald-500 rounded-full p-1">
+                    <div className={`bg-${themeColor}-500 rounded-full p-1`}>
                       <CheckCircle2 size={14} className="text-white" />
                     </div>
                   ) : (
@@ -771,7 +801,7 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
                 <span>Subtotal ({selectedMeals.length} meals)</span>
                 <span>₹{basePrice * selectedMeals.length}</span>
               </div>
-              <div className="flex justify-between text-sm text-emerald-400">
+              <div className={`flex justify-between text-sm text-${themeColor}-400`}>
                 <span>Discount ({getDiscount()}%)</span>
                 <span>-₹{Math.round((basePrice * selectedMeals.length * getDiscount()) / 100)}</span>
               </div>
@@ -797,9 +827,9 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
               </div>
             </div>
 
-            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-4 mb-6 sm:mb-8">
-              <p className="text-emerald-400 text-xs font-medium">
-                ⚠️ After payment of ₹{total}, please share the screenshot and your delivery address on WhatsApp to activate your service.
+            <div className={`bg-${themeColor}-500/10 border border-${themeColor}-500/20 rounded-2xl p-4 mb-6 sm:mb-8`}>
+              <p className={`text-${themeColor}-400 text-xs font-medium`}>
+                ⚠️ After payment of ₹{total}, please share the screenshot and your delivery address in <span className="text-white font-bold underline">{selectedLocation}</span> on WhatsApp to activate your service.
               </p>
             </div>
 
@@ -839,15 +869,35 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
 );
 };
 
+const DietaryMark = ({ type }: { type: 'veg' | 'non-veg' | 'egg' }) => {
+  const colors = {
+    veg: 'border-emerald-500',
+    'non-veg': 'border-red-500',
+    egg: 'border-yellow-500'
+  };
+  const dotColors = {
+    veg: 'bg-emerald-500',
+    'non-veg': 'bg-red-500',
+    egg: 'bg-yellow-500'
+  };
+
+  return (
+    <div className={`w-5 h-5 border-2 ${colors[type]} flex items-center justify-center rounded-sm p-[2px] bg-white/5`}>
+      <div className={`w-full h-full rounded-full ${dotColors[type]}`} />
+    </div>
+  );
+};
+
 const TiffinPage = ({ onBack }: { onBack: () => void }) => {
   const [subscriptionConfig, setSubscriptionConfig] = useState<{ type: string, basePrice: number } | null>(null);
-  const [filter, setFilter] = useState<'all' | 'veg' | 'non-veg'>('all');
+  const [filter, setFilter] = useState<'all' | 'veg' | 'non-veg' | 'egg'>('all');
 
   const plans = [
     {
       id: 'veg',
       type: 'Vegetarian',
       category: 'veg',
+      mark: 'veg' as const,
       price: 2700,
       popular: false,
       features: [
@@ -861,9 +911,27 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
       btnColor: 'bg-white text-emerald-900 hover:bg-emerald-50'
     },
     {
+      id: 'egg',
+      type: 'Egg',
+      category: 'egg',
+      mark: 'egg' as const,
+      price: 2999,
+      popular: false,
+      features: [
+        '4 Roti + Rice + Dal + Egg Curry/Sabji',
+        'Fresh Salad Included',
+        'Sweet/Raita (Weekdays)',
+        'Daily Menu Change',
+        'Guaranteed On-time Delivery'
+      ],
+      color: 'bg-yellow-900/20 border-yellow-500/30',
+      btnColor: 'bg-yellow-500 text-black hover:bg-yellow-600'
+    },
+    {
       id: 'non-veg',
       type: 'Non-Veg',
       category: 'non-veg',
+      mark: 'non-veg' as const,
       price: 3199,
       popular: true,
       features: [
@@ -873,8 +941,8 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
         'Daily Menu Change',
         'Guaranteed On-time Delivery'
       ],
-      color: 'bg-emerald-900/50 border-emerald-400/30',
-      btnColor: 'bg-emerald-500 text-white hover:bg-emerald-600'
+      color: 'bg-red-900/50 border-red-400/30',
+      btnColor: 'bg-red-500 text-white hover:bg-red-600'
     }
   ];
 
@@ -936,10 +1004,11 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
           </div>
 
           {/* Filters */}
-          <div className="flex justify-center gap-4 mb-12">
+          <div className="flex justify-center flex-wrap gap-4 mb-12">
             {[
               { id: 'all', label: 'All Plans' },
               { id: 'veg', label: 'Vegetarian' },
+              { id: 'egg', label: 'Egg' },
               { id: 'non-veg', label: 'Non-Veg' }
             ].map((f) => (
               <button
@@ -947,7 +1016,9 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                 onClick={() => setFilter(f.id as any)}
                 className={`px-6 py-2 rounded-full text-sm font-bold transition-all border ${
                   filter === f.id 
-                    ? 'bg-emerald-500 border-emerald-500 text-white shadow-lg shadow-emerald-500/20' 
+                    ? (f.id === 'non-veg' ? 'bg-red-500 border-red-500 text-white shadow-lg shadow-red-500/20' : 
+                       f.id === 'egg' ? 'bg-yellow-500 border-yellow-500 text-black shadow-lg shadow-yellow-500/20' :
+                       'bg-emerald-500 border-emerald-500 text-white shadow-lg shadow-emerald-500/20')
                     : 'bg-white/5 border-white/10 text-emerald-100/60 hover:border-white/20'
                 }`}
               >
@@ -974,9 +1045,12 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                 </div>
                 <div className="relative z-10 flex-1">
                   {plan.popular && (
-                    <div className="inline-block px-3 py-1 bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">Popular Choice</div>
+                    <div className={`inline-block px-3 py-1 ${plan.id === 'non-veg' ? 'bg-red-500' : 'bg-emerald-500'} text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-4`}>Popular Choice</div>
                   )}
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.type} Plan</h3>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-2xl font-bold text-white">{plan.type} Plan</h3>
+                    <DietaryMark type={plan.mark} />
+                  </div>
                   <div className="flex items-baseline gap-1 mb-8">
                     <span className="text-4xl font-bold text-white">₹{plan.price}</span>
                     <span className="text-emerald-200/60">/ month</span>
@@ -985,7 +1059,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                   <ul className="space-y-4 mb-10">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center text-emerald-50 text-sm">
-                        <CheckCircle2 size={18} className="text-emerald-400 mr-3 shrink-0" /> {feature}
+                        <CheckCircle2 size={18} className={`${plan.id === 'non-veg' ? 'text-red-400' : plan.id === 'egg' ? 'text-yellow-400' : 'text-emerald-400'} mr-3 shrink-0`} /> {feature}
                       </li>
                     ))}
                   </ul>
