@@ -17,6 +17,7 @@ export async function getAIPlannerResponse(prompt: string, history: { role: 'use
         Services: Catering (Kitty parties, Birthday parties, Get-togethers, Weddings, Anniversaries, Bhandara, Bulk orders), Decoration, Event Management, and Tent Services.
         Coverage: All over India.
         Tone: Professional, helpful, and welcoming.
+        If users provide specific event details like Date, Time, or Location (passed in [Context]), acknowledge them and tailor your suggestions accordingly.
         If users ask about Tiffin services, mention they are available in Delhi, Noida, and Faridabad, but focus on event planning here.
         Keep responses concise and structured.`,
       }

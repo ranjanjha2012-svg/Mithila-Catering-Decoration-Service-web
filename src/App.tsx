@@ -342,6 +342,9 @@ const AIPlanner = () => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [eventDate, setEventDate] = useState('');
+  const [eventTime, setEventTime] = useState('');
+  const [eventLocation, setEventLocation] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -365,7 +368,18 @@ const AIPlanner = () => {
       parts: [{ text: m.text }]
     }));
 
-    const response = await getAIPlannerResponse(userMsg, history);
+    // Incorporate event details into the prompt if provided
+    let contextPrompt = userMsg;
+    const details = [];
+    if (eventDate) details.push(`Date: ${eventDate}`);
+    if (eventTime) details.push(`Time: ${eventTime}`);
+    if (eventLocation) details.push(`Location: ${eventLocation}`);
+    
+    if (details.length > 0) {
+      contextPrompt = `[Context - Event Details: ${details.join(', ')}] ${userMsg}`;
+    }
+
+    const response = await getAIPlannerResponse(contextPrompt, history);
     setMessages(prev => [...prev, { role: 'model', text: response }]);
     setIsLoading(false);
   };
@@ -374,19 +388,55 @@ const AIPlanner = () => {
     <section id="planner" className="py-24 bg-[#0a192f] relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-blue-900/40 to-red-900/40 rounded-[2.5rem] p-1 border border-white/10 shadow-2xl">
-          <div className="bg-[#0a192f] rounded-[2.4rem] overflow-hidden flex flex-col h-[600px]">
+          <div className="bg-[#0a192f] rounded-[2.4rem] overflow-hidden flex flex-col h-[700px]">
             {/* Header */}
-            <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-red-600 flex items-center justify-center shadow-lg shadow-red-600/20">
-                  <Bot className="text-white" size={24} />
-                </div>
-                <div>
-                  <h3 className="text-white font-bold">Mithila AI Planner</h3>
-                  <div className="flex items-center text-emerald-500 text-xs font-medium">
-                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
-                    Online & Ready to Plan
+            <div className="p-6 border-b border-white/10 flex flex-col gap-6 bg-white/5">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-red-600 flex items-center justify-center shadow-lg shadow-red-600/20">
+                    <Bot className="text-white" size={24} />
                   </div>
+                  <div>
+                    <h3 className="text-white font-bold">Mithila AI Planner</h3>
+                    <div className="flex items-center text-emerald-500 text-xs font-medium">
+                      <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
+                      Online & Ready to Plan
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Event Details Quick Fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="relative">
+                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={14} />
+                  <input 
+                    type="date" 
+                    value={eventDate}
+                    onChange={(e) => setEventDate(e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white focus:outline-none focus:ring-1 focus:ring-red-500/50 transition-all"
+                    placeholder="Event Date"
+                  />
+                </div>
+                <div className="relative">
+                  <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={14} />
+                  <input 
+                    type="time" 
+                    value={eventTime}
+                    onChange={(e) => setEventTime(e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white focus:outline-none focus:ring-1 focus:ring-red-500/50 transition-all"
+                    placeholder="Event Time"
+                  />
+                </div>
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={14} />
+                  <input 
+                    type="text" 
+                    value={eventLocation}
+                    onChange={(e) => setEventLocation(e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-red-500/50 transition-all"
+                    placeholder="Event Location"
+                  />
                 </div>
               </div>
             </div>
@@ -969,6 +1019,67 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
             <div className="flex items-center gap-2">
               <MapPin size={16} /> Delhi | Noida | Faridabad
             </div>
+          </div>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="mt-24">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">What Our Customers Say</h2>
+            <div className="flex justify-center gap-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star key={star} size={20} className="text-yellow-500 fill-yellow-500" />
+              ))}
+            </div>
+            <p className="text-emerald-400 text-sm mt-2 font-medium">4.9/5 Average Rating</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Rahul Sharma",
+                location: "Delhi",
+                text: "The food is truly home-like. No extra oil or spices, just perfect for daily consumption. Highly recommended!",
+                rating: 5
+              },
+              {
+                name: "Priya Singh",
+                location: "Noida",
+                text: "Best tiffin service in Noida. Their non-veg plan is a must-try! The flavors are authentic and fresh.",
+                rating: 5
+              },
+              {
+                name: "Amit Verma",
+                location: "Faridabad",
+                text: "Very punctual with delivery. The packaging is hygienic and the menu changes every day. Never gets boring.",
+                rating: 5
+              }
+            ].map((testimonial, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white/5 border border-white/10 p-6 rounded-3xl relative group hover:border-emerald-500/30 transition-all"
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} size={14} className="text-yellow-500 fill-yellow-500" />
+                  ))}
+                </div>
+                <p className="text-emerald-100/80 text-sm leading-relaxed mb-6 italic">"{testimonial.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+                    {testimonial.name[0]}
+                  </div>
+                  <div>
+                    <div className="text-white font-bold text-sm">{testimonial.name}</div>
+                    <div className="text-emerald-400/60 text-[10px] uppercase tracking-widest">{testimonial.location}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
