@@ -64,7 +64,7 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a192f]/90 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a0505]/90 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex items-center cursor-pointer gap-3" onClick={handleLogoClick}>
@@ -121,7 +121,7 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0a192f] border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-[#1a0505] border-b border-white/10 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-4">
               <button onClick={() => { onNavigate('home'); setIsOpen(false); }} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Home</button>
@@ -290,7 +290,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-[#0a192f]">
+    <section id="services" className="py-24 bg-[#1a0505]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">Our Premium Services</h2>
@@ -385,10 +385,10 @@ const AIPlanner = () => {
   };
 
   return (
-    <section id="planner" className="py-24 bg-[#0a192f] relative">
+    <section id="planner" className="py-24 bg-[#1a0505] relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-blue-900/40 to-red-900/40 rounded-[2.5rem] p-1 border border-white/10 shadow-2xl">
-          <div className="bg-[#0a192f] rounded-[2.4rem] overflow-hidden flex flex-col h-[700px]">
+        <div className="bg-gradient-to-br from-red-900/40 to-red-950/40 rounded-[2.5rem] p-1 border border-white/10 shadow-2xl">
+          <div className="bg-[#1a0505] rounded-[2.4rem] overflow-hidden flex flex-col h-[700px]">
             {/* Header */}
             <div className="p-6 border-b border-white/10 flex flex-col gap-6 bg-white/5">
               <div className="flex items-center justify-between">
@@ -529,7 +529,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#0a192f]">
+    <section id="contact" className="py-24 bg-[#1a0505]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
@@ -538,8 +538,19 @@ const Contact = () => {
             
             <div className="space-y-8">
               <div className="flex items-start gap-6">
-                <div className="p-4 bg-blue-600/10 rounded-2xl border border-blue-600/20">
-                  <Phone className="text-blue-500" />
+                <div className="p-4 bg-red-600/10 rounded-2xl border border-red-600/20">
+                  <Users className="text-red-500" />
+                </div>
+                <div>
+                  <div className="text-gray-500 text-sm uppercase tracking-wider mb-1">Owner</div>
+                  <div className="text-white font-bold text-lg">Ranjan Kumar Jha</div>
+                  <div className="text-red-500/80 text-xs font-medium uppercase tracking-widest">Founder & Managing Director</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="p-4 bg-red-600/10 rounded-2xl border border-red-600/20">
+                  <Phone className="text-red-500" />
                 </div>
                 <div>
                   <div className="text-gray-500 text-sm uppercase tracking-wider mb-1">Call Us</div>
@@ -569,7 +580,7 @@ const Contact = () => {
               </div>
             <div className="mt-12 pt-12 border-t border-white/10">
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <Globe className="text-blue-500" size={20} /> Service Coverage
+                <Globe className="text-red-500" size={20} /> Service Coverage
               </h3>
               <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative group">
                 <iframe 
@@ -582,7 +593,7 @@ const Contact = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
                 <div className="absolute inset-0 bg-blue-600/5 pointer-events-none"></div>
-                <div className="absolute bottom-4 left-4 right-4 bg-[#0a192f]/80 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                <div className="absolute bottom-4 left-4 right-4 bg-[#1a0505]/80 backdrop-blur-md p-3 rounded-xl border border-white/10">
                   <div className="text-xs font-bold text-white uppercase tracking-widest mb-1">Primary Hub</div>
                   <div className="text-sm text-gray-300">Delhi NCR, Faridabad, Noida & Pan-India Service</div>
                 </div>
@@ -593,7 +604,7 @@ const Contact = () => {
                     {city}
                   </span>
                 ))}
-                <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-[10px] text-blue-400 font-bold">
+                <span className="px-3 py-1 bg-red-500/10 border border-red-500/20 rounded-full text-[10px] text-red-400 font-bold">
                   + Pan India
                 </span>
               </div>
@@ -639,10 +650,10 @@ const Contact = () => {
                 <div className="space-y-2">
                   <label className="text-sm text-gray-400 ml-1">Event Type</label>
                   <select name="event_type" className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-red-500/50">
-                    <option className="bg-[#0a192f]">Wedding</option>
-                    <option className="bg-[#0a192f]">Birthday</option>
-                    <option className="bg-[#0a192f]">Corporate Event</option>
-                    <option className="bg-[#0a192f]">Other</option>
+                    <option className="bg-[#1a0505]">Wedding</option>
+                    <option className="bg-[#1a0505]">Birthday</option>
+                    <option className="bg-[#1a0505]">Corporate Event</option>
+                    <option className="bg-[#1a0505]">Other</option>
                   </select>
                 </div>
                 <div className="space-y-2">
@@ -712,7 +723,7 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-[#0a192f] border border-white/10 p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
+              className="bg-[#1a0505] border border-white/10 p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
             >
             <button 
               onClick={onClose}
@@ -1088,7 +1099,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
 };
 
 const Footer = () => (
-  <footer className="bg-[#050c18] border-t border-white/5 pt-20 pb-10">
+  <footer className="bg-[#0a0202] border-t border-white/5 pt-20 pb-10">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-2">
@@ -1099,7 +1110,7 @@ const Footer = () => (
               className="h-12 w-auto object-contain"
               referrerPolicy="no-referrer"
             />
-            <div className="text-2xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
+            <div className="text-2xl font-bold bg-gradient-to-r from-red-500 to-red-800 bg-clip-text text-transparent">
               Mithila Catering & Decoration Service
             </div>
           </div>
@@ -1193,7 +1204,7 @@ const LocationPopup = () => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="bg-[#0a192f] border border-white/10 p-8 rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
+            className="bg-[#1a0505] border border-white/10 p-8 rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-blue-500"></div>
             <div className="flex flex-col items-center text-center">
@@ -1236,12 +1247,15 @@ const WhatsAppButton = () => (
     animate={{ scale: 1, opacity: 1 }}
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.9 }}
-    className="fixed bottom-8 right-8 z-[90] bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center group"
+    className="fixed bottom-8 right-8 z-[90] bg-[#25D366] text-white p-3 rounded-full shadow-2xl flex items-center justify-center group border-2 border-white/20"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217s.231.001.332.005c.109.004.258-.041.404.314l.542 1.312c.058.141.096.305.004.49-.092.185-.138.301-.273.458-.135.157-.285.35-.406.469-.139.137-.285.287-.123.565.162.278.719 1.186 1.541 1.918.822.732 1.517.957 1.834 1.091.317.134.504.111.693-.102.188-.213.807-.942.993-1.266.187-.324.373-.271.629-.176l1.972.933c.254.122.423.18.481.278.058.098.058.569-.086.974z"/>
-    </svg>
-    <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 font-bold whitespace-nowrap">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+      alt="WhatsApp" 
+      className="w-8 h-8"
+      referrerPolicy="no-referrer"
+    />
+    <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 font-bold whitespace-nowrap text-sm">
       Chat on WhatsApp
     </span>
   </motion.a>
@@ -1265,7 +1279,7 @@ export default function App() {
   }, [currentPage]);
 
   return (
-    <div className="min-h-screen bg-[#0a192f] font-sans selection:bg-red-500/30">
+    <div className="min-h-screen bg-[#1a0505] font-sans selection:bg-red-500/30">
       <WhatsAppButton />
       <LocationPopup />
       <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
