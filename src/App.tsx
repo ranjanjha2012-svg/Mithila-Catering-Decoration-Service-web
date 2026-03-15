@@ -70,7 +70,7 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
           <div className="flex items-center cursor-pointer gap-3" onClick={handleLogoClick}>
             <img 
               src="https://i.ibb.co/gZJyvtVG/file-000000003bec71faa9b37e16b055cb49.png" 
-              alt="Mithila Catering Logo" 
+              alt="Mithila Catering & Decoration Service Logo" 
               className="h-12 w-auto object-contain"
               referrerPolicy="no-referrer"
             />
@@ -78,7 +78,7 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
               <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent leading-none">
                 Mithila
               </span>
-              <span className="text-[10px] text-gray-400 font-light uppercase tracking-widest mt-1 hidden sm:block">Catering & Decoration</span>
+              <span className="text-[10px] text-gray-400 font-light uppercase tracking-widest mt-1 hidden sm:block">Catering & Decoration Service</span>
             </div>
           </div>
 
@@ -632,7 +632,7 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
   };
 
   const total = calculateTotal();
-  const upiLink = `upi://pay?pa=${upiId}&pn=Mithila%20Catering&am=${total}&cu=INR`;
+  const upiLink = `upi://pay?pa=${upiId}&pn=Mithila%20Catering%20And%20Decoration%20Service&am=${total}&cu=INR`;
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiLink)}`;
 
   return (
@@ -945,8 +945,16 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-2">
-          <div className="text-2xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent mb-6">
-            Mithila Catering
+          <div className="flex items-center gap-4 mb-6">
+            <img 
+              src="https://i.ibb.co/gZJyvtVG/file-000000003bec71faa9b37e16b055cb49.png" 
+              alt="Mithila Catering & Decoration Service Logo" 
+              className="h-12 w-auto object-contain"
+              referrerPolicy="no-referrer"
+            />
+            <div className="text-2xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
+              Mithila Catering & Decoration Service
+            </div>
           </div>
           <p className="text-gray-500 max-w-sm mb-8">
             Professional event management and catering services since 2021. We bring high-quality service and authentic flavors to every event across India.
@@ -995,7 +1003,7 @@ const Footer = () => (
           © 2026 Mithila Catering & Decoration Service. All Rights Reserved.
         </p>
         <p className="text-gray-600 text-xs uppercase tracking-widest">
-          Designed by Ranjan Kumar Jha
+          Designed by Walt Designs & Studio
         </p>
       </div>
     </div>
