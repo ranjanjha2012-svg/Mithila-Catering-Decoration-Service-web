@@ -20,7 +20,8 @@ import {
   Truck,
   Globe,
   MoreHorizontal,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Play
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getAIPlannerResponse } from './services/geminiService';
@@ -362,6 +363,134 @@ const Services = () => {
   );
 };
 
+const FeaturedGallery = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
+  return (
+    <section className="py-24 bg-[#1a0505] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our <span className="text-red-500">Recent</span> Work</h2>
+            <p className="text-gray-400 max-w-xl">Take a look at some of our most recent setups and decorations that have made events truly special.</p>
+          </motion.div>
+          <motion.button 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            onClick={() => onNavigate('gallery')}
+            className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold transition-all flex items-center group"
+          >
+            View Full Gallery <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </motion.button>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group relative rounded-[2.5rem] overflow-hidden aspect-[16/10] cursor-pointer"
+            onClick={() => onNavigate('gallery')}
+          >
+            <img 
+              src="https://i.ibb.co/67CKhp6R/Whats-App-Image-2026-03-15-at-15-56-19-1.jpg" 
+              alt="Banner Setup" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+              <span className="text-red-500 text-xs font-bold uppercase tracking-widest mb-2">Catering & Setup</span>
+              <h3 className="text-white text-2xl font-bold">Grand Event Banner</h3>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="group relative rounded-[2.5rem] overflow-hidden aspect-[16/10] cursor-pointer"
+            onClick={() => onNavigate('gallery')}
+          >
+            <img 
+              src="https://i.ibb.co/21hS44ky/56ryhg5r6.jpg" 
+              alt="Tent Setup" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+              <span className="text-red-500 text-xs font-bold uppercase tracking-widest mb-2">Decoration</span>
+              <h3 className="text-white text-2xl font-bold">Premium Tent Service</h3>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const VideoHighlights = () => {
+  const videos = [
+    {
+      title: "Grand Wedding Decor",
+      url: "https://www.w3schools.com/html/mov_bbb.mp4", // Placeholder video
+      thumbnail: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Premium Catering Setup",
+      url: "https://www.w3schools.com/html/movie.mp4", // Placeholder video
+      thumbnail: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-[#1a0505] border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Video <span className="text-red-500">Highlights</span></h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">Experience the magic of our events through these short cinematic highlights.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          {videos.map((video, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="group relative rounded-[2.5rem] overflow-hidden bg-black border border-white/10 shadow-2xl"
+            >
+              <video 
+                className="w-full aspect-video object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                controls
+                poster={video.thumbnail}
+              >
+                <source src={video.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute top-6 left-6 pointer-events-none">
+                <div className="bg-red-600/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
+                  <Play size={14} className="fill-white text-white" />
+                  <span className="text-white text-xs font-bold uppercase tracking-widest">{video.title}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <p className="text-gray-500 text-sm italic">
+            Note: For the best performance, we recommend hosting long videos on YouTube and sharing the links with us.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const EventGallery = ({ onBack }: { onBack: () => void }) => {
   const categories = ['All', 'Weddings', 'Corporate', 'Decorations', 'Catering'];
   const [activeCategory, setActiveCategory] = useState('All');
@@ -370,14 +499,16 @@ const EventGallery = ({ onBack }: { onBack: () => void }) => {
   const images = [
     { url: 'https://i.ibb.co/67CKhp6R/Whats-App-Image-2026-03-15-at-15-56-19-1.jpg', category: 'Catering', title: 'Banner' },
     { url: 'https://i.ibb.co/DN845bT/Whats-App-Image-2026-03-15-at-15-56-2734r5.jpg', category: 'Catering', title: 'Breakfast' },
-    { url: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800', category: 'Weddings', title: 'Grand Wedding Reception' },
-    { url: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800', category: 'Corporate', title: 'Corporate Gala Dinner' },
-    { url: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800', category: 'Decorations', title: 'Floral Stage Decor' },
-    { url: 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800', category: 'Catering', title: 'Premium Buffet Setup' },
-    { url: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=800', category: 'Weddings', title: 'Traditional Mandap' },
-    { url: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800', category: 'Decorations', title: 'Luxury Lighting Design' },
-    { url: 'https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&q=80&w=800', category: 'Corporate', title: 'Annual Awards Night' },
-    { url: 'https://images.unsplash.com/photo-1504150559433-c4a5e36e275d?auto=format&fit=crop&q=80&w=800', category: 'Catering', title: 'Gourmet Appetizers' },
+    { url: 'https://i.ibb.co/q3fkc003/Whats-App-Image-2026-03-15-at-15-56-19.jpg', category: 'Decorations', title: 'Setup' },
+    { url: 'https://i.ibb.co/h1KNWqCH/34r5t3.jpg', category: 'Decorations', title: 'Tent Service' },
+    { url: 'https://i.ibb.co/21hS44ky/56ryhg5r6.jpg', category: 'Decorations', title: 'Tent' },
+    { url: 'https://i.ibb.co/5tX9mvW/khbikuuk.jpg', category: 'Catering', title: 'Buffet' },
+    { url: 'https://i.ibb.co/HLQ10nBQ/Whats-App-Image-2026-03-15-at-15-56-25.jpg', category: 'Decorations', title: 'Event Setup' },
+    { url: 'https://i.ibb.co/MDjbSgFg/4e5rft3r.jpg', category: 'Catering', title: 'Our Thali' },
+    { url: 'https://i.ibb.co/jvsP6JHH/Whats-App-Image-2026-03-15-at-16-00-25.jpg', category: 'Weddings', title: 'Haldi/Mehndi Decoration' },
+    { url: 'https://i.ibb.co/BSfKSxp/Whats-App-Image-2026-03-15-at-16-00-2534rfd34.jpg', category: 'Weddings', title: 'Haldi/Mehndi Decoration' },
+    { url: 'https://i.ibb.co/k6rC3ZFf/Whats-App-Image-2026-03-15-at-15-56-26-1-iug.jpg', category: 'Corporate', title: 'Proper Team' },
+    { url: 'https://i.ibb.co/tPCR9XpY/Whats-App-Image-2026-03-15-at-15-56-27.jpg', category: 'Catering', title: 'Catering Setup' },
   ];
 
   const filteredImages = activeCategory === 'All' 
@@ -429,7 +560,7 @@ const EventGallery = ({ onBack }: { onBack: () => void }) => {
           <AnimatePresence mode="popLayout">
             {filteredImages.map((img, index) => (
               <motion.div
-                key={img.title}
+                key={img.url}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -1536,6 +1667,8 @@ export default function App() {
           <>
             <Hero />
             <Services />
+            <VideoHighlights />
+            <FeaturedGallery onNavigate={setCurrentPage} />
             <AIPlanner />
             <Contact />
           </>
