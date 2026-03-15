@@ -78,7 +78,7 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
               <span className="text-xl font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent leading-none">
                 Mithila
               </span>
-              <span className="text-[10px] text-gray-400 font-light uppercase tracking-widest mt-1 hidden sm:block">Catering & Decoration Service</span>
+              <span className="text-[10px] text-gray-400 font-light uppercase tracking-widest mt-1 block">Catering & Decoration Service</span>
             </div>
           </div>
 
@@ -189,6 +189,24 @@ const Hero = () => (
             >
               Enquire Now
             </button>
+          </div>
+
+          <div className="mt-6 flex items-center gap-3">
+            <span className="text-gray-400 text-sm">We are also available on:</span>
+            <a 
+              href="https://zomato.onelink.me/xqzv/2eh1vuyw" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-[#E23744]/10 border border-[#E23744]/20 rounded-full hover:bg-[#E23744]/20 transition-all group"
+            >
+              <img 
+                src="https://i.ibb.co/84NZ3GSF/zomato-logo-zomato-icon-transparent-free-png.webp" 
+                alt="Zomato" 
+                className="h-4 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <span className="text-[#E23744] text-xs font-bold uppercase tracking-widest">Order Now</span>
+            </a>
           </div>
           
           <div className="mt-12 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
@@ -833,10 +851,28 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
             <Truck size={14} className="mr-2" /> Exclusive Service
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Monthly Tiffin Service</h1>
-          <p className="text-emerald-100/70 max-w-2xl mx-auto text-lg mb-10">
+          <p className="text-emerald-100/70 max-w-2xl mx-auto text-lg mb-6">
             Healthy, hygienic, and home-style meals delivered on time. 
             Available exclusively in <span className="text-white font-bold">Delhi, Faridabad, and Noida</span>.
           </p>
+
+          <div className="flex flex-col items-center gap-4 mb-10">
+            <p className="text-emerald-400/80 text-sm font-medium uppercase tracking-widest">We are also available on</p>
+            <a 
+              href="https://zomato.onelink.me/xqzv/2eh1vuyw" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 rounded-full hover:bg-white/20 transition-all group"
+            >
+              <img 
+                src="https://i.ibb.co/84NZ3GSF/zomato-logo-zomato-icon-transparent-free-png.webp" 
+                alt="Zomato" 
+                className="h-6 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <span className="text-white font-bold">Order via Zomato</span>
+            </a>
+          </div>
 
           {/* Filters */}
           <div className="flex justify-center gap-4 mb-12">
@@ -968,6 +1004,14 @@ const Footer = () => (
             </a>
             <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all">
               <Mail size={18} />
+            </a>
+            <a href="https://zomato.onelink.me/xqzv/2eh1vuyw" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#E23744] transition-all overflow-hidden p-2 group">
+              <img 
+                src="https://i.ibb.co/84NZ3GSF/zomato-logo-zomato-icon-transparent-free-png.webp" 
+                alt="Zomato" 
+                className="w-full h-full object-contain transition-all"
+                referrerPolicy="no-referrer"
+              />
             </a>
           </div>
         </div>
