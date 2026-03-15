@@ -18,7 +18,9 @@ import {
   ArrowLeft,
   CheckCircle2,
   Truck,
-  Globe
+  Globe,
+  MoreHorizontal,
+  Image as ImageIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getAIPlannerResponse } from './services/geminiService';
@@ -94,6 +96,26 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
               setTimeout(() => document.getElementById('planner')?.scrollIntoView({ behavior: 'smooth' }), 100);
             }} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">AI Planner</button>
             <button onClick={() => onNavigate('tiffin')} className={`text-sm font-medium transition-colors ${currentPage === 'tiffin' ? 'text-emerald-500' : 'text-gray-300 hover:text-white'}`}>Tiffin Service</button>
+            
+            {/* More Dropdown */}
+            <div className="relative group">
+              <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                More <MoreHorizontal size={16} />
+              </button>
+              <div className="absolute top-full right-0 mt-2 w-48 bg-[#1a0505] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all transform translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="p-2">
+                  <button 
+                    onClick={() => {
+                      onNavigate('gallery');
+                    }}
+                    className="flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+                  >
+                    <ImageIcon size={16} /> Event Gallery
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <button 
               onClick={() => {
                 onNavigate('home');
@@ -125,6 +147,10 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
           >
             <div className="px-4 pt-2 pb-6 space-y-4">
               <button onClick={() => { onNavigate('home'); setIsOpen(false); }} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Home</button>
+              <button onClick={() => { 
+                onNavigate('gallery'); 
+                setIsOpen(false);
+              }} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Event Gallery</button>
               <button onClick={() => { onNavigate('tiffin'); setIsOpen(false); }} className="block w-full text-left px-3 py-2 text-base font-medium text-emerald-500">Tiffin Service</button>
               <button 
                 onClick={() => {
@@ -332,6 +358,152 @@ const Services = () => {
           </div>
         </div>
       </div>
+    </section>
+  );
+};
+
+const EventGallery = ({ onBack }: { onBack: () => void }) => {
+  const categories = ['All', 'Weddings', 'Corporate', 'Decorations', 'Catering'];
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedImage, setSelectedImage] = useState<{ url: string, title: string, category: string } | null>(null);
+
+  const images = [
+    { url: 'https://i.ibb.co/67CKhp6R/Whats-App-Image-2026-03-15-at-15-56-19-1.jpg', category: 'Catering', title: 'Banner' },
+    { url: 'https://i.ibb.co/DN845bT/Whats-App-Image-2026-03-15-at-15-56-2734r5.jpg', category: 'Catering', title: 'Breakfast' },
+    { url: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800', category: 'Weddings', title: 'Grand Wedding Reception' },
+    { url: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800', category: 'Corporate', title: 'Corporate Gala Dinner' },
+    { url: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800', category: 'Decorations', title: 'Floral Stage Decor' },
+    { url: 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800', category: 'Catering', title: 'Premium Buffet Setup' },
+    { url: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=800', category: 'Weddings', title: 'Traditional Mandap' },
+    { url: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800', category: 'Decorations', title: 'Luxury Lighting Design' },
+    { url: 'https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&q=80&w=800', category: 'Corporate', title: 'Annual Awards Night' },
+    { url: 'https://images.unsplash.com/photo-1504150559433-c4a5e36e275d?auto=format&fit=crop&q=80&w=800', category: 'Catering', title: 'Gourmet Appetizers' },
+  ];
+
+  const filteredImages = activeCategory === 'All' 
+    ? images 
+    : images.filter(img => img.category === activeCategory);
+
+  return (
+    <section id="gallery" className="pt-32 pb-24 bg-[#1a0505] min-h-screen relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          onClick={onBack}
+          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 group"
+        >
+          <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+          Back to Home
+        </motion.button>
+
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Event <span className="text-red-500">Gallery</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Explore our portfolio of stunning events, exquisite decorations, and mouth-watering catering setups across India.
+            </p>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center gap-4 mt-10">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === cat 
+                    ? 'bg-red-600 text-white shadow-lg shadow-red-600/20' 
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          <AnimatePresence mode="popLayout">
+            {filteredImages.map((img, index) => (
+              <motion.div
+                key={img.title}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="group flex flex-col gap-4"
+              >
+                <div 
+                  onClick={() => setSelectedImage(img)}
+                  className="relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-2xl border border-white/5"
+                >
+                  <img 
+                    src={img.url} 
+                    alt={img.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20">
+                      <ImageIcon className="text-white" size={24} />
+                    </div>
+                  </div>
+                </div>
+                <div className="px-2">
+                  <span className="text-red-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-1 block">{img.category}</span>
+                  <h4 className="text-white font-bold text-xl tracking-tight group-hover:text-red-500 transition-colors">{img.title}</h4>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Full Screen HD View Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 md:p-10"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button 
+              className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110]"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X size={40} />
+            </button>
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-5xl w-full h-full flex flex-col items-center justify-center gap-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-[80vh] rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                <img 
+                  src={selectedImage.url} 
+                  alt={selectedImage.title}
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="text-center">
+                <span className="text-red-500 text-xs font-bold uppercase tracking-[0.3em] mb-2 block">{selectedImage.category}</span>
+                <h3 className="text-white text-3xl font-bold">{selectedImage.title}</h3>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
@@ -1172,7 +1344,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
   );
 };
 
-const Footer = () => (
+const Footer = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
   <footer className="bg-[#0a0202] border-t border-white/5 pt-20 pb-10">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid md:grid-cols-4 gap-12 mb-16">
@@ -1215,10 +1387,11 @@ const Footer = () => (
         <div>
           <h4 className="text-white font-bold mb-6">Quick Links</h4>
           <ul className="space-y-4 text-gray-500 text-sm">
-            <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-            <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-            <li><a href="#planner" className="hover:text-white transition-colors">AI Planner</a></li>
-            <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }} className="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="#services" onClick={(e) => { e.preventDefault(); onNavigate('home'); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-white transition-colors">Services</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('gallery'); }} className="hover:text-white transition-colors">Event Gallery</a></li>
+            <li><a href="#planner" onClick={(e) => { e.preventDefault(); onNavigate('home'); setTimeout(() => document.getElementById('planner')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-white transition-colors">AI Planner</a></li>
+            <li><a href="#contact" onClick={(e) => { e.preventDefault(); onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-white transition-colors">Contact</a></li>
           </ul>
         </div>
 
@@ -1366,12 +1539,14 @@ export default function App() {
             <AIPlanner />
             <Contact />
           </>
-        ) : (
+        ) : currentPage === 'tiffin' ? (
           <TiffinPage onBack={() => setCurrentPage('home')} />
+        ) : (
+          <EventGallery onBack={() => setCurrentPage('home')} />
         )}
       </main>
 
-      <Footer />
+      <Footer onNavigate={setCurrentPage} />
     </div>
   );
 }
