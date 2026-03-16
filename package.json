@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build": "CI=false vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
@@ -30,5 +30,8 @@
   },
   "engines": {
     "node": "20.x"
+  },
+  "overrides": {
+    "glob": "^13.0.6"
   }
 }
