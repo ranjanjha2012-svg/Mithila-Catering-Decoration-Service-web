@@ -67,7 +67,7 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a1405]/90 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-amber-50/90 backdrop-blur-md border-b border-amber-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex items-center cursor-pointer gap-3" onClick={handleLogoClick}>
@@ -78,38 +78,38 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
               referrerPolicy="no-referrer"
             />
             <div className="flex flex-col">
-              <span className="text-xl font-bold bg-gradient-to-r from-amber-500 to-yellow-500 bg-clip-text text-transparent leading-none">
+              <span className="text-xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent leading-none">
                 Mithila
               </span>
-              <span className="text-[10px] text-gray-400 font-light uppercase tracking-widest mt-1 block">Catering & Decoration Service</span>
+              <span className="text-[10px] text-amber-800 font-light uppercase tracking-widest mt-1 block">Catering & Decoration Service</span>
             </div>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => onNavigate('home')} className={`text-sm font-medium transition-colors ${currentPage === 'home' ? 'text-amber-500' : 'text-gray-300 hover:text-white'}`}>Home</button>
+            <button onClick={() => onNavigate('home')} className={`text-sm font-medium transition-colors ${currentPage === 'home' ? 'text-amber-600' : 'text-amber-900 hover:text-amber-600'}`}>Home</button>
             <button onClick={() => {
               onNavigate('home');
               setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100);
-            }} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</button>
+            }} className="text-sm font-medium text-amber-900 hover:text-amber-600 transition-colors">Services</button>
             <button onClick={() => {
               onNavigate('home');
               setTimeout(() => document.getElementById('planner')?.scrollIntoView({ behavior: 'smooth' }), 100);
-            }} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">AI Planner</button>
-            <button onClick={() => onNavigate('tiffin')} className={`text-sm font-medium transition-colors ${currentPage === 'tiffin' ? 'text-emerald-500' : 'text-gray-300 hover:text-white'}`}>Tiffin Service</button>
+            }} className="text-sm font-medium text-amber-900 hover:text-amber-600 transition-colors">AI Planner</button>
+            <button onClick={() => onNavigate('tiffin')} className={`text-sm font-medium transition-colors ${currentPage === 'tiffin' ? 'text-emerald-600' : 'text-amber-900 hover:text-amber-600'}`}>Tiffin Service</button>
             
             {/* More Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+              <button className="flex items-center gap-1 text-sm font-medium text-amber-900 hover:text-amber-600 transition-colors">
                 More <MoreHorizontal size={16} />
               </button>
-              <div className="absolute top-full right-0 mt-2 w-48 bg-[#1a1405] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all transform translate-y-2 group-hover:translate-y-0 z-50">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-amber-50 border border-amber-200 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all transform translate-y-2 group-hover:translate-y-0 z-50">
                 <div className="p-2">
                   <button 
                     onClick={() => {
                       onNavigate('gallery');
                     }}
-                    className="flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+                    className="flex items-center gap-3 w-full px-4 py-2 text-sm text-amber-900 hover:text-amber-600 hover:bg-amber-100 rounded-lg transition-all"
                   >
                     <ImageIcon size={16} /> Event Gallery
                   </button>
@@ -144,15 +144,15 @@ const Navbar = ({ onNavigate, currentPage }: { onNavigate: (page: string) => voi
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#1a1405] border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-amber-50 border-b border-amber-200 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-4">
-              <button onClick={() => { onNavigate('home'); setIsOpen(false); }} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Home</button>
+              <button onClick={() => { onNavigate('home'); setIsOpen(false); }} className="block w-full text-left px-3 py-2 text-base font-medium text-amber-900 hover:text-amber-600">Home</button>
               <button onClick={() => { 
                 onNavigate('gallery'); 
                 setIsOpen(false);
-              }} className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Event Gallery</button>
-              <button onClick={() => { onNavigate('tiffin'); setIsOpen(false); }} className="block w-full text-left px-3 py-2 text-base font-medium text-emerald-500">Tiffin Service</button>
+              }} className="block w-full text-left px-3 py-2 text-base font-medium text-amber-900 hover:text-amber-600">Event Gallery</button>
+              <button onClick={() => { onNavigate('tiffin'); setIsOpen(false); }} className="block w-full text-left px-3 py-2 text-base font-medium text-emerald-600">Tiffin Service</button>
               <button 
                 onClick={() => {
                   onNavigate('home');
@@ -175,7 +175,7 @@ const Hero = () => (
   <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
     {/* Background elements */}
     <div className="absolute inset-0 z-0">
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-amber-600/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-amber-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10"></div>
     </div>
@@ -197,29 +197,29 @@ const Hero = () => (
           >
             <Star size={14} className="mr-2" /> Serving Excellence Since 2021
           </motion.div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-            Crafting <span className="text-amber-500">Unforgettable</span> Moments Across India
+          <h1 className="text-5xl md:text-7xl font-bold text-amber-950 leading-tight mb-6">
+            Crafting <span className="text-amber-600">Unforgettable</span> Moments Across India
           </h1>
-          <p className="text-lg text-gray-400 mb-8 max-w-lg">
+          <p className="text-lg text-amber-800/80 mb-8 max-w-lg">
             From grand weddings to intimate gatherings, Mithila Catering & Decoration Service brings professional event management to your doorstep with high-quality service and authentic flavors.
           </p>
           <div className="flex flex-wrap gap-4">
             <button 
               onClick={() => document.getElementById('planner')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-bold transition-all flex items-center group"
+              className="px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-bold transition-all flex items-center group shadow-lg shadow-amber-600/20"
             >
               Start AI Planning <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold transition-all"
+              className="px-8 py-4 bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-200 rounded-full font-bold transition-all"
             >
               Enquire Now
             </button>
           </div>
 
           <div className="mt-6 flex items-center gap-3">
-            <span className="text-gray-400 text-sm">We are also available on:</span>
+            <span className="text-amber-800/60 text-sm">We are also available on:</span>
             <a 
               href="https://zomato.onelink.me/xqzv/2eh1vuyw" 
               target="_blank" 
@@ -236,18 +236,18 @@ const Hero = () => (
             </a>
           </div>
           
-          <div className="mt-12 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
+          <div className="mt-12 grid grid-cols-3 gap-8 border-t border-amber-200 pt-8">
             <div>
-              <div className="text-3xl font-bold text-white"><Counter value="600+" /></div>
-              <div className="text-sm text-gray-500 uppercase tracking-wider">Events Done</div>
+              <div className="text-3xl font-bold text-amber-950"><Counter value="600+" /></div>
+              <div className="text-sm text-amber-800/60 uppercase tracking-wider">Events Done</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white"><Counter value="4000+" /></div>
-              <div className="text-sm text-gray-500 uppercase tracking-wider">Customers</div>
+              <div className="text-3xl font-bold text-amber-950"><Counter value="4000+" /></div>
+              <div className="text-sm text-amber-800/60 uppercase tracking-wider">Customers</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white">24/7</div>
-              <div className="text-sm text-gray-500 uppercase tracking-wider">Support</div>
+              <div className="text-3xl font-bold text-amber-950">24/7</div>
+              <div className="text-sm text-amber-800/60 uppercase tracking-wider">Support</div>
             </div>
           </div>
         </motion.div>
@@ -258,24 +258,24 @@ const Hero = () => (
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative hidden lg:block"
         >
-          <div className="relative z-10 rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-blue-500/10">
+          <div className="relative z-10 rounded-3xl overflow-hidden border border-amber-200 shadow-2xl shadow-amber-600/10">
             <img 
               src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80" 
               alt="Event Decoration" 
               className="w-full h-[600px] object-cover"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f] via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-amber-950/40 via-transparent to-transparent"></div>
           </div>
           {/* Decorative floating cards */}
-          <div className="absolute -bottom-6 -left-6 bg-white/10 backdrop-blur-xl p-6 rounded-2xl border border-white/20 z-20">
+          <div className="absolute -bottom-6 -left-6 bg-white/80 backdrop-blur-xl p-6 rounded-2xl border border-amber-200 z-20 shadow-xl">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-amber-500 rounded-lg">
+              <div className="p-3 bg-amber-600 rounded-lg">
                 <Utensils className="text-white" />
               </div>
               <div>
-                <div className="text-white font-bold">Premium Catering</div>
-                <div className="text-gray-400 text-sm">Authentic Mithila Flavors</div>
+                <div className="text-amber-950 font-bold">Premium Catering</div>
+                <div className="text-amber-800/70 text-sm">Authentic Mithila Flavors</div>
               </div>
             </div>
           </div>
@@ -300,13 +300,13 @@ const Services = () => {
     {
       title: "Catering Services",
       desc: "Exquisite multi-cuisine menus for Kitty Parties, Birthdays, Bhandara, and Bulk Orders.",
-      icon: <Utensils className="text-blue-500" size={32} />,
+      icon: <Utensils className="text-amber-600" size={32} />,
       img: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80"
     },
     {
       title: "Tent & Decoration",
       desc: "Premium tent services and breathtaking floral, lighting, and structural decor concepts.",
-      icon: <Calendar className="text-emerald-500" size={32} />,
+      icon: <Calendar className="text-amber-600" size={32} />,
       img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80"
     }
   ];
@@ -317,11 +317,11 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-[#1a1405]">
+    <section id="services" className="py-24 bg-amber-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Our Premium Services</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">We offer a wide range of event management and tent services across India, ensuring every detail is handled with precision.</p>
+          <h2 className="text-4xl font-bold text-amber-950 mb-4">Our Premium Services</h2>
+          <p className="text-amber-800/70 max-w-2xl mx-auto">We offer a wide range of event management and tent services across India, ensuring every detail is handled with precision.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-20">
@@ -330,16 +330,16 @@ const Services = () => {
               key={i}
               whileHover={{ y: -10 }}
               onClick={scrollToContact}
-              className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden group cursor-pointer transition-all hover:border-amber-500/50"
+              className="bg-white border border-amber-200 rounded-3xl overflow-hidden group cursor-pointer transition-all hover:border-amber-500/50 shadow-sm hover:shadow-xl"
             >
               <div className="h-48 overflow-hidden">
                 <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />
               </div>
               <div className="p-8">
                 <div className="mb-4">{s.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">{s.desc}</p>
-                <div className="flex items-center text-amber-500 text-sm font-bold group-hover:gap-2 transition-all">
+                <h3 className="text-xl font-bold text-amber-950 mb-3">{s.title}</h3>
+                <p className="text-amber-800/70 text-sm leading-relaxed mb-6">{s.desc}</p>
+                <div className="flex items-center text-amber-600 text-sm font-bold group-hover:gap-2 transition-all">
                   Enquire Now <ChevronRight size={16} />
                 </div>
               </div>
@@ -347,13 +347,13 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="bg-gradient-to-r from-amber-600/10 to-blue-600/10 rounded-[2.5rem] p-12 border border-white/5">
-          <h3 className="text-2xl font-bold text-white text-center mb-10">We Specialize In</h3>
+        <div className="bg-gradient-to-r from-amber-600/5 to-amber-900/5 rounded-[2.5rem] p-12 border border-amber-200">
+          <h3 className="text-2xl font-bold text-amber-950 text-center mb-10">We Specialize In</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {specialties.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                <CheckCircle2 size={18} className="text-amber-500 shrink-0" />
-                <span className="text-gray-300 text-sm font-medium">{item}</span>
+              <div key={idx} className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-amber-100 hover:bg-amber-50 transition-colors shadow-sm">
+                <CheckCircle2 size={18} className="text-amber-600 shrink-0" />
+                <span className="text-amber-900 text-sm font-medium">{item}</span>
               </div>
             ))}
           </div>
@@ -365,7 +365,7 @@ const Services = () => {
 
 const FeaturedGallery = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
   return (
-    <section className="py-24 bg-[#1a1405] relative overflow-hidden">
+    <section className="py-24 bg-amber-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <motion.div
@@ -373,15 +373,15 @@ const FeaturedGallery = ({ onNavigate }: { onNavigate: (page: string) => void })
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our <span className="text-amber-500">Recent</span> Work</h2>
-            <p className="text-gray-400 max-w-xl">Take a look at some of our most recent setups and decorations that have made events truly special.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-950 mb-4">Our <span className="text-amber-600">Recent</span> Work</h2>
+            <p className="text-amber-800/70 max-w-xl">Take a look at some of our most recent setups and decorations that have made events truly special.</p>
           </motion.div>
           <motion.button 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onClick={() => onNavigate('gallery')}
-            className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold transition-all flex items-center group"
+            className="px-8 py-4 bg-white hover:bg-amber-100 text-amber-900 border border-amber-200 rounded-full font-bold transition-all flex items-center group shadow-sm"
           >
             View Full Gallery <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </motion.button>
@@ -447,11 +447,11 @@ const VideoHighlights = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#1a1405] border-t border-white/5">
+    <section className="py-24 bg-amber-50 border-t border-amber-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Video <span className="text-amber-500">Highlights</span></h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">Experience the magic of our events through these short cinematic highlights.</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-amber-950 mb-4">Video <span className="text-amber-600">Highlights</span></h2>
+          <p className="text-amber-800/70 max-w-2xl mx-auto">Experience the magic of our events through these short cinematic highlights.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -461,7 +461,7 @@ const VideoHighlights = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="group relative rounded-[2.5rem] overflow-hidden bg-black border border-white/10 shadow-2xl"
+              className="group relative rounded-[2.5rem] overflow-hidden bg-amber-950 border border-amber-200 shadow-2xl"
             >
               <video 
                 className="w-full aspect-video object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
@@ -482,7 +482,7 @@ const VideoHighlights = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <p className="text-gray-500 text-sm italic">
+          <p className="text-amber-800/50 text-sm italic">
             Note: For the best performance, we recommend hosting long videos on YouTube and sharing the links with us.
           </p>
         </div>
@@ -517,13 +517,13 @@ const EventGallery = ({ onBack }: { onBack: () => void }) => {
     : mediaItems.filter(item => item.category === activeCategory);
 
   return (
-    <section id="gallery" className="pt-32 pb-24 bg-[#1a1405] min-h-screen relative overflow-hidden">
+    <section id="gallery" className="pt-32 pb-24 bg-amber-50 min-h-screen relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={onBack}
-          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 group"
+          className="flex items-center gap-2 text-amber-800/60 hover:text-amber-950 transition-colors mb-12 group"
         >
           <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
           Back to Home
@@ -534,8 +534,8 @@ const EventGallery = ({ onBack }: { onBack: () => void }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Event <span className="text-amber-500">Gallery</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            <h2 className="text-4xl md:text-6xl font-bold text-amber-950 mb-6">Event <span className="text-amber-500">Gallery</span></h2>
+            <p className="text-amber-800/70 max-w-2xl mx-auto text-lg">
               Explore our portfolio of stunning events, exquisite decorations, and mouth-watering catering setups across India.
             </p>
           </motion.div>
@@ -548,7 +548,7 @@ const EventGallery = ({ onBack }: { onBack: () => void }) => {
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
                   activeCategory === cat 
                     ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/20' 
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                    : 'bg-white text-amber-900 border border-amber-200 hover:bg-amber-100'
                 }`}
               >
                 {cat}
@@ -571,7 +571,7 @@ const EventGallery = ({ onBack }: { onBack: () => void }) => {
               >
                 <div 
                   onClick={() => setSelectedMedia(item)}
-                  className="relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-2xl border border-white/5 bg-black/20"
+                  className="relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-xl border border-amber-200 bg-amber-100/20"
                 >
                   {item.type === 'video' ? (
                     <div className="w-full h-full relative">
@@ -595,16 +595,16 @@ const EventGallery = ({ onBack }: { onBack: () => void }) => {
                       referrerPolicy="no-referrer"
                     />
                   )}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-amber-950/10 group-hover:bg-amber-950/0 transition-colors duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20">
+                    <div className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/30">
                       {item.type === 'video' ? <Play className="text-white" size={24} /> : <ImageIcon className="text-white" size={24} />}
                     </div>
                   </div>
                 </div>
                 <div className="px-2">
-                  <span className="text-amber-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-1 block">{item.category}</span>
-                  <h4 className="text-white font-bold text-xl tracking-tight group-hover:text-amber-500 transition-colors">{item.title}</h4>
+                  <span className="text-amber-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-1 block">{item.category}</span>
+                  <h4 className="text-amber-950 font-bold text-xl tracking-tight group-hover:text-amber-600 transition-colors">{item.title}</h4>
                 </div>
               </motion.div>
             ))}
@@ -714,24 +714,24 @@ const AIPlanner = () => {
   };
 
   return (
-    <section id="planner" className="py-24 bg-[#1a1405] relative">
+    <section id="planner" className="py-24 bg-amber-50 relative">
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-[120px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[120px]"></div>
       </div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="bg-gradient-to-br from-[#D4AF37]/30 via-[#996515]/20 to-[#D4AF37]/30 rounded-[2.5rem] p-1 border border-[#D4AF37]/30 shadow-[0_0_50px_rgba(212,175,55,0.15)]">
-          <div className="bg-[#1a1405] rounded-[2.4rem] overflow-hidden flex flex-col h-[700px]">
+        <div className="bg-gradient-to-br from-amber-600/30 via-amber-900/20 to-amber-600/30 rounded-[2.5rem] p-1 border border-amber-200 shadow-[0_0_50px_rgba(217,119,6,0.1)]">
+          <div className="bg-white rounded-[2.4rem] overflow-hidden flex flex-col h-[700px] border border-amber-100">
             {/* Header */}
-            <div className="p-6 border-b border-white/10 flex flex-col gap-6 bg-white/5">
+            <div className="p-6 border-b border-amber-100 flex flex-col gap-6 bg-amber-50/50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-amber-600 flex items-center justify-center shadow-lg shadow-amber-600/20">
                     <Bot className="text-white" size={24} />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold">Mithila AI Planner</h3>
-                    <div className="flex items-center text-emerald-500 text-xs font-medium">
-                      <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
+                    <h3 className="text-amber-950 font-bold">Mithila AI Planner</h3>
+                    <div className="flex items-center text-emerald-600 text-xs font-medium">
+                      <span className="w-2 h-2 bg-emerald-600 rounded-full mr-2 animate-pulse"></span>
                       Online & Ready to Plan
                     </div>
                   </div>
@@ -741,32 +741,32 @@ const AIPlanner = () => {
               {/* Event Details Quick Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={14} />
+                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-800/50" size={14} />
                   <input 
                     type="date" 
                     value={eventDate}
                     onChange={(e) => setEventDate(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all"
+                    className="w-full bg-white border border-amber-200 rounded-xl py-2 pl-9 pr-3 text-xs text-amber-950 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all"
                     placeholder="Event Date"
                   />
                 </div>
                 <div className="relative">
-                  <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={14} />
+                  <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-800/50" size={14} />
                   <input 
                     type="time" 
                     value={eventTime}
                     onChange={(e) => setEventTime(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all"
+                    className="w-full bg-white border border-amber-200 rounded-xl py-2 pl-9 pr-3 text-xs text-amber-950 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all"
                     placeholder="Event Time"
                   />
                 </div>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={14} />
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-800/50" size={14} />
                   <input 
                     type="text" 
                     value={eventLocation}
                     onChange={(e) => setEventLocation(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all"
+                    className="w-full bg-white border border-amber-200 rounded-xl py-2 pl-9 pr-3 text-xs text-amber-950 placeholder-amber-800/40 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all"
                     placeholder="Event Location"
                   />
                 </div>
@@ -774,7 +774,7 @@ const AIPlanner = () => {
             </div>
 
             {/* Chat Area */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide bg-white">
               {messages.map((m, i) => (
                 <motion.div
                   key={i}
@@ -784,8 +784,8 @@ const AIPlanner = () => {
                 >
                   <div className={`max-w-[80%] p-4 rounded-2xl ${
                     m.role === 'user' 
-                      ? 'bg-amber-600 text-white rounded-tr-none' 
-                      : 'bg-white/10 text-gray-200 rounded-tl-none border border-white/5'
+                      ? 'bg-amber-600 text-white rounded-tr-none shadow-md' 
+                      : 'bg-amber-50 text-amber-900 rounded-tl-none border border-amber-100'
                   }`}>
                     <p className="text-sm leading-relaxed whitespace-pre-wrap">{m.text}</p>
                   </div>
@@ -793,10 +793,10 @@ const AIPlanner = () => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white/10 p-4 rounded-2xl rounded-tl-none border border-white/5 flex gap-2">
-                    <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-                    <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+                  <div className="bg-amber-50 p-4 rounded-2xl rounded-tl-none border border-amber-100 flex gap-2">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce [animation-delay:0.4s]"></div>
                   </div>
                 </div>
               )}
@@ -804,7 +804,7 @@ const AIPlanner = () => {
             </div>
 
             {/* Input */}
-            <div className="p-6 border-t border-white/10 bg-white/5">
+            <div className="p-6 border-t border-amber-100 bg-amber-50/30">
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -812,7 +812,7 @@ const AIPlanner = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                   placeholder="Describe your event needs..."
-                  className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-6 pr-16 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
+                  className="w-full bg-white border border-amber-200 rounded-2xl py-4 pl-6 pr-16 text-amber-950 placeholder-amber-800/40 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
                 />
                 <button 
                   onClick={handleSend}
@@ -822,7 +822,7 @@ const AIPlanner = () => {
                   <Send size={20} />
                 </button>
               </div>
-              <p className="text-center text-[10px] text-gray-500 mt-4 uppercase tracking-widest">Powered by Gemini AI</p>
+              <p className="text-center text-[10px] text-amber-800/50 mt-4 uppercase tracking-widest">Powered by Gemini AI</p>
             </div>
           </div>
         </div>
@@ -861,82 +861,82 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#1a1405]">
+    <section id="contact" className="py-24 bg-amber-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
-            <h2 className="text-4xl font-bold text-white mb-6">Get in Touch</h2>
-            <p className="text-gray-400 mb-12">Have questions about your upcoming event? Fill out the form and our team will respond within 24 hours.</p>
+            <h2 className="text-4xl font-bold text-amber-950 mb-6">Get in Touch</h2>
+            <p className="text-amber-800/70 mb-12">Have questions about your upcoming event? Fill out the form and our team will respond within 24 hours.</p>
             
             <div className="space-y-8">
               <div className="flex items-start gap-6">
-                <div className="p-4 bg-red-600/10 rounded-2xl border border-red-600/20">
-                  <Users className="text-amber-500" />
+                <div className="p-4 bg-amber-600/10 rounded-2xl border border-amber-600/20">
+                  <Users className="text-amber-600" />
                 </div>
                 <div>
-                  <div className="text-gray-500 text-sm uppercase tracking-wider mb-1">Owner</div>
-                  <div className="text-white font-bold text-lg">Ranjan Kumar Jha</div>
-                  <div className="text-amber-500/80 text-xs font-medium uppercase tracking-widest">Founder & Managing Director</div>
+                  <div className="text-amber-800/50 text-sm uppercase tracking-wider mb-1">Owner</div>
+                  <div className="text-amber-950 font-bold text-lg">Ranjan Kumar Jha</div>
+                  <div className="text-amber-600 text-xs font-medium uppercase tracking-widest">Founder & Managing Director</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="p-4 bg-red-600/10 rounded-2xl border border-red-600/20">
-                  <Phone className="text-amber-500" />
+                <div className="p-4 bg-amber-600/10 rounded-2xl border border-amber-600/20">
+                  <Phone className="text-amber-600" />
                 </div>
                 <div>
-                  <div className="text-gray-500 text-sm uppercase tracking-wider mb-1">Call Us</div>
-                  <div className="text-white font-bold text-lg">+91 9650254164</div>
+                  <div className="text-amber-800/50 text-sm uppercase tracking-wider mb-1">Call Us</div>
+                  <div className="text-amber-950 font-bold text-lg">+91 9650254164</div>
                 </div>
               </div>
               
               <div className="flex items-start gap-6">
-                <div className="p-4 bg-red-600/10 rounded-2xl border border-red-600/20">
-                  <Mail className="text-amber-500" />
+                <div className="p-4 bg-amber-600/10 rounded-2xl border border-amber-600/20">
+                  <Mail className="text-amber-600" />
                 </div>
                 <div>
-                  <div className="text-gray-500 text-sm uppercase tracking-wider mb-1">Email Us</div>
-                  <div className="text-white font-bold text-lg">ranjanjha2012@gmail.com</div>
+                  <div className="text-amber-800/50 text-sm uppercase tracking-wider mb-1">Email Us</div>
+                  <div className="text-amber-950 font-bold text-lg">ranjanjha2012@gmail.com</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-6">
                 <div className="p-4 bg-emerald-600/10 rounded-2xl border border-emerald-600/20">
-                  <MapPin className="text-emerald-500" />
+                  <MapPin className="text-emerald-600" />
                 </div>
                 <div>
-                  <div className="text-gray-500 text-sm uppercase tracking-wider mb-1">Location</div>
-                  <div className="text-white font-bold text-lg">Serving All Over India</div>
-                  <div className="text-gray-400 text-sm">Head Office: Delhi NCR</div>
+                  <div className="text-amber-800/50 text-sm uppercase tracking-wider mb-1">Location</div>
+                  <div className="text-amber-950 font-bold text-lg">Serving All Over India</div>
+                  <div className="text-amber-800/70 text-sm">Head Office: Delhi NCR</div>
                 </div>
               </div>
-            <div className="mt-12 pt-12 border-t border-white/10">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <Globe className="text-amber-500" size={20} /> Service Coverage
+            <div className="mt-12 pt-12 border-t border-amber-200">
+              <h3 className="text-xl font-bold text-amber-950 mb-6 flex items-center gap-2">
+                <Globe className="text-amber-600" size={20} /> Service Coverage
               </h3>
-              <div className="rounded-2xl overflow-hidden border border-white/10 h-64 relative group">
+              <div className="rounded-2xl overflow-hidden border border-amber-200 h-64 relative group shadow-md">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5619676302455!2d77.2273210755001!3d28.61393907567491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b7187947bd0!2sIndia%20Gate!5e0!3m2!1sen!2sin!4v1710435000000!5m2!1sen!2sin" 
                   width="100%" 
                   height="100%" 
-                  style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }} 
+                  style={{ border: 0, filter: 'grayscale(0.5) contrast(1.1)' }} 
                   allowFullScreen 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
-                <div className="absolute inset-0 bg-blue-600/5 pointer-events-none"></div>
-                <div className="absolute bottom-4 left-4 right-4 bg-[#1a1405]/80 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                  <div className="text-xs font-bold text-white uppercase tracking-widest mb-1">Primary Hub</div>
-                  <div className="text-sm text-gray-300">Delhi NCR, Faridabad, Noida & Pan-India Service</div>
+                <div className="absolute inset-0 bg-amber-600/5 pointer-events-none"></div>
+                <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-xl border border-amber-200 shadow-lg">
+                  <div className="text-xs font-bold text-amber-950 uppercase tracking-widest mb-1">Primary Hub</div>
+                  <div className="text-sm text-amber-900">Delhi NCR, Faridabad, Noida & Pan-India Service</div>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {['Delhi', 'Noida', 'Faridabad', 'Gurugram', 'Patna', 'Darbhanga', 'Mumbai', 'Bangalore'].map(city => (
-                  <span key={city} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-400 font-medium">
+                  <span key={city} className="px-3 py-1 bg-white border border-amber-100 rounded-full text-[10px] text-amber-800 font-medium shadow-sm">
                     {city}
                   </span>
                 ))}
-                <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[10px] text-amber-400 font-bold">
+                <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[10px] text-amber-600 font-bold">
                   + Pan India
                 </span>
               </div>
@@ -944,7 +944,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="bg-white/5 p-8 sm:p-12 rounded-[2.5rem] border border-white/10">
+        <div className="bg-white p-8 sm:p-12 rounded-[2.5rem] border border-amber-200 shadow-xl">
             {submitted ? (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -954,47 +954,47 @@ const Contact = () => {
                 <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle2 className="text-emerald-500" size={40} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Enquiry Sent!</h3>
-                <p className="text-gray-400">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                <h3 className="text-2xl font-bold text-amber-950 mb-2">Enquiry Sent!</h3>
+                <p className="text-amber-800/70">Thank you for reaching out. We'll get back to you within 24 hours.</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm text-gray-400 ml-1">Full Name</label>
-                    <input required name="name" type="text" className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
+                    <label className="text-sm text-amber-800/60 ml-1">Full Name</label>
+                    <input required name="name" type="text" className="w-full bg-amber-50 border border-amber-200 rounded-xl py-3 px-4 text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm text-gray-400 ml-1">Phone Number</label>
-                    <input required name="phone" type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
+                    <label className="text-sm text-amber-800/60 ml-1">Phone Number</label>
+                    <input required name="phone" type="tel" className="w-full bg-amber-50 border border-amber-200 rounded-xl py-3 px-4 text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
                   </div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm text-gray-400 ml-1">Email Address</label>
-                    <input required name="email" type="email" className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
+                    <label className="text-sm text-amber-800/60 ml-1">Email Address</label>
+                    <input required name="email" type="email" className="w-full bg-amber-50 border border-amber-200 rounded-xl py-3 px-4 text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm text-gray-400 ml-1">Approximate Guests</label>
-                    <input required name="guests" type="number" placeholder="e.g. 200" className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
+                    <label className="text-sm text-amber-800/60 ml-1">Approximate Guests</label>
+                    <input required name="guests" type="number" placeholder="e.g. 200" className="w-full bg-amber-50 border border-amber-200 rounded-xl py-3 px-4 text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500/50" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm text-gray-400 ml-1">Event Type</label>
-                  <select name="event_type" className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50">
-                    <option className="bg-[#1a1405]">Wedding</option>
-                    <option className="bg-[#1a1405]">Birthday</option>
-                    <option className="bg-[#1a1405]">Corporate Event</option>
-                    <option className="bg-[#1a1405]">Other</option>
+                  <label className="text-sm text-amber-800/60 ml-1">Event Type</label>
+                  <select name="event_type" className="w-full bg-amber-50 border border-amber-200 rounded-xl py-3 px-4 text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+                    <option className="bg-white">Wedding</option>
+                    <option className="bg-white">Birthday</option>
+                    <option className="bg-white">Corporate Event</option>
+                    <option className="bg-white">Other</option>
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm text-gray-400 ml-1">Delivery Address</label>
-                  <textarea required name="address" rows={3} placeholder="Enter your full address..." className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"></textarea>
+                  <label className="text-sm text-amber-800/60 ml-1">Delivery Address</label>
+                  <textarea required name="address" rows={3} placeholder="Enter your full address..." className="w-full bg-amber-50 border border-amber-200 rounded-xl py-3 px-4 text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500/50"></textarea>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm text-gray-400 ml-1">Your Message</label>
-                  <textarea required name="message" rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"></textarea>
+                  <label className="text-sm text-amber-800/60 ml-1">Your Message</label>
+                  <textarea required name="message" rows={4} className="w-full bg-amber-50 border border-amber-200 rounded-xl py-3 px-4 text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500/50"></textarea>
                 </div>
                 <button type="submit" className="w-full py-4 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-amber-600/20">
                   Send Enquiry
@@ -1057,28 +1057,28 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[110] overflow-y-auto bg-black/90 backdrop-blur-md">
+        <div className="fixed inset-0 z-[110] overflow-y-auto bg-amber-950/40 backdrop-blur-md">
           <div className="flex min-h-full items-center justify-center p-4 sm:p-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-[#1a1405] border border-white/10 p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
+              className="bg-amber-50 border border-amber-200 p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
             >
             <button 
               onClick={onClose}
-              className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors"
+              className="absolute top-6 right-6 text-amber-800 hover:text-amber-950 transition-colors"
             >
               <X size={24} />
             </button>
 
-            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-${themeColor}-500 to-blue-500`}></div>
+            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-amber-600`}></div>
             
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Customize Your Plan</h3>
-            <p className={`text-${themeColor}-400 text-sm font-medium mb-4 sm:mb-6`}>{planType} Service</p>
+            <h3 className="text-xl sm:text-2xl font-bold text-amber-950 mb-1">Customize Your Plan</h3>
+            <p className={`text-amber-600 text-sm font-medium mb-4 sm:mb-6`}>{planType} Service</p>
             
             <div className="space-y-3 mb-6">
-              <div className="text-xs text-gray-400 mb-1 font-medium uppercase tracking-wider">Select Delivery Location (Mandatory)</div>
+              <div className="text-xs text-amber-800/60 mb-1 font-medium uppercase tracking-wider">Select Delivery Location (Mandatory)</div>
               <div className="grid grid-cols-3 gap-2">
                 {locations.map((loc) => (
                   <button
@@ -1086,8 +1086,8 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
                     onClick={() => setSelectedLocation(loc)}
                     className={`py-2 px-1 rounded-xl border text-[10px] font-bold transition-all ${
                       selectedLocation === loc
-                        ? `bg-${themeColor}-500 border-${themeColor}-500 text-white shadow-lg shadow-${themeColor}-500/20`
-                        : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
+                        ? `bg-amber-600 border-amber-600 text-white shadow-lg shadow-amber-600/20`
+                        : 'bg-white border-amber-200 text-amber-800 hover:border-amber-400'
                     }`}
                   >
                     {loc}
@@ -1097,50 +1097,50 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
             </div>
 
             <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
-              <div className="text-xs text-gray-400 mb-1 font-medium uppercase tracking-wider">Select Meals (Add to Cart)</div>
+              <div className="text-xs text-amber-800/60 mb-1 font-medium uppercase tracking-wider">Select Meals (Add to Cart)</div>
               {meals.map((meal) => (
                 <button
                   key={meal.id}
                   onClick={() => toggleMeal(meal.id)}
                   className={`w-full flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all ${
                     selectedMeals.includes(meal.id)
-                      ? `bg-${themeColor}-500/20 border-${themeColor}-500 text-white`
-                      : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
+                      ? `bg-amber-100 border-amber-500 text-amber-950`
+                      : 'bg-white border-amber-200 text-amber-800 hover:border-amber-400'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`${selectedMeals.includes(meal.id) ? `text-${themeColor}-400` : 'text-gray-500'}`}>
+                    <div className={`${selectedMeals.includes(meal.id) ? `text-amber-600` : 'text-amber-400'}`}>
                       {meal.icon}
                     </div>
                     <span className="font-bold">{meal.label}</span>
                   </div>
                   {selectedMeals.includes(meal.id) ? (
-                    <div className={`bg-${themeColor}-500 rounded-full p-1`}>
+                    <div className={`bg-amber-600 rounded-full p-1`}>
                       <CheckCircle2 size={14} className="text-white" />
                     </div>
                   ) : (
-                    <div className="w-6 h-6 rounded-full border-2 border-white/10"></div>
+                    <div className="w-6 h-6 rounded-full border-2 border-amber-200"></div>
                   )}
                 </button>
               ))}
             </div>
 
-            <div className="bg-white/5 rounded-2xl p-4 mb-8 space-y-2">
-              <div className="flex justify-between text-sm text-gray-400">
+            <div className="bg-amber-100/50 rounded-2xl p-4 mb-8 space-y-2">
+              <div className="flex justify-between text-sm text-amber-800">
                 <span>Subtotal ({selectedMeals.length} meals)</span>
                 <span>₹{basePrice * selectedMeals.length}</span>
               </div>
-              <div className={`flex justify-between text-sm text-${themeColor}-400`}>
+              <div className={`flex justify-between text-sm text-amber-600`}>
                 <span>Discount ({getDiscount()}%)</span>
                 <span>-₹{Math.round((basePrice * selectedMeals.length * getDiscount()) / 100)}</span>
               </div>
-              <div className="flex justify-between text-lg font-bold text-white pt-2 border-t border-white/10">
+              <div className="flex justify-between text-lg font-bold text-amber-950 pt-2 border-t border-amber-200">
                 <span>Total Amount</span>
                 <span>₹{total}</span>
               </div>
             </div>
 
-            <div className="bg-white p-3 sm:p-4 rounded-3xl mb-4 sm:mb-6 inline-block shadow-xl shadow-emerald-500/10">
+            <div className="bg-white p-3 sm:p-4 rounded-3xl mb-4 sm:mb-6 inline-block shadow-xl shadow-amber-500/10">
               <img 
                 src={qrCodeUrl} 
                 alt="UPI QR Code" 
@@ -1150,26 +1150,26 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
             </div>
 
             <div className="space-y-4 mb-6 sm:mb-8">
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <div className="text-xs text-gray-500 uppercase tracking-widest mb-1">UPI ID</div>
-                <div className="text-white font-mono font-bold text-lg">{upiId}</div>
+              <div className="bg-white border border-amber-200 rounded-2xl p-4">
+                <div className="text-xs text-amber-800/60 uppercase tracking-widest mb-1">UPI ID</div>
+                <div className="text-amber-950 font-mono font-bold text-lg">{upiId}</div>
               </div>
             </div>
 
-            <div className={`bg-${themeColor}-500/10 border border-${themeColor}-500/20 rounded-2xl p-4 mb-6 sm:mb-8`}>
-              <p className={`text-${themeColor}-400 text-xs font-medium`}>
-                ⚠️ After payment of ₹{total}, please share the screenshot and your delivery address in <span className="text-white font-bold underline">{selectedLocation}</span> on WhatsApp to activate your service.
+            <div className={`bg-amber-100 border border-amber-200 rounded-2xl p-4 mb-6 sm:mb-8`}>
+              <p className={`text-amber-800 text-xs font-medium`}>
+                ⚠️ After payment of ₹{total}, please share the screenshot and your delivery address in <span className="text-amber-950 font-bold underline">{selectedLocation}</span> on WhatsApp to activate your service.
               </p>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-6 sm:mb-8 text-left">
-              <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-3">Delivery Timings</h4>
-              <ul className="space-y-2 text-xs text-gray-400">
-                <li className="flex justify-between"><span>Breakfast:</span> <span className="text-white">07:00 AM - 10:00 AM</span></li>
-                <li className="flex justify-between"><span>Lunch:</span> <span className="text-white">12:00 PM - 03:00 PM</span></li>
-                <li className="flex justify-between"><span>Dinner:</span> <span className="text-white">05:30 PM - 10:00 PM</span></li>
+            <div className="bg-white border border-amber-200 rounded-2xl p-4 mb-6 sm:mb-8 text-left">
+              <h4 className="text-amber-950 text-xs font-bold uppercase tracking-widest mb-3">Delivery Timings</h4>
+              <ul className="space-y-2 text-xs text-amber-800">
+                <li className="flex justify-between"><span>Breakfast:</span> <span className="text-amber-950">07:00 AM - 10:00 AM</span></li>
+                <li className="flex justify-between"><span>Lunch:</span> <span className="text-amber-950">12:00 PM - 03:00 PM</span></li>
+                <li className="flex justify-between"><span>Dinner:</span> <span className="text-amber-950">05:30 PM - 10:00 PM</span></li>
               </ul>
-              <p className="mt-3 text-[10px] text-emerald-400/70 italic">
+              <p className="mt-3 text-[10px] text-amber-600/70 italic">
                 * Note: Breakfast may be delivered slightly late; Dinner is delivered early.
               </p>
             </div>
@@ -1177,7 +1177,7 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
             <div className="flex gap-3">
               <button 
                 onClick={onClose}
-                className="flex-1 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold transition-all border border-white/10"
+                className="flex-1 py-4 bg-white hover:bg-amber-50 text-amber-950 rounded-xl font-bold transition-all border border-amber-200"
               >
                 Back
               </button>
@@ -1185,7 +1185,7 @@ const TiffinSubscriptionModal = ({ isOpen, onClose, planType, basePrice }: { isO
                 href="https://wa.link/a8re98"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-[2] py-4 bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20"
+                className="flex-[2] py-4 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-600/20"
               >
                 Share Screenshot
               </a>
@@ -1236,8 +1236,8 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
         'Daily Menu Change (Dal & Sabji)',
         'Guaranteed On-time Delivery'
       ],
-      color: 'bg-white/10 border-white/20',
-      btnColor: 'bg-white text-emerald-900 hover:bg-emerald-50'
+      color: 'bg-white border-amber-200',
+      btnColor: 'bg-amber-600 text-white hover:bg-amber-700'
     },
     {
       id: 'egg',
@@ -1253,8 +1253,8 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
         'Daily Menu Change',
         'Guaranteed On-time Delivery'
       ],
-      color: 'bg-yellow-900/20 border-yellow-500/30',
-      btnColor: 'bg-yellow-500 text-black hover:bg-yellow-600'
+      color: 'bg-amber-50 border-amber-300',
+      btnColor: 'bg-amber-600 text-white hover:bg-amber-700'
     },
     {
       id: 'non-veg',
@@ -1270,8 +1270,8 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
         'Daily Menu Change',
         'Guaranteed On-time Delivery'
       ],
-      color: 'bg-amber-900/50 border-amber-400/30',
-      btnColor: 'bg-amber-500 text-white hover:bg-amber-600'
+      color: 'bg-amber-100 border-amber-400',
+      btnColor: 'bg-amber-600 text-white hover:bg-amber-700'
     }
   ];
 
@@ -1282,7 +1282,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#064e3b] pt-32 pb-24">
+    <div className="min-h-screen bg-amber-50 pt-32 pb-24">
       <TiffinSubscriptionModal 
         isOpen={!!subscriptionConfig} 
         onClose={() => setSubscriptionConfig(null)} 
@@ -1294,7 +1294,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={handleBack}
-          className="flex items-center gap-2 text-emerald-400 hover:text-white transition-colors mb-8 group"
+          className="flex items-center gap-2 text-amber-600 hover:text-amber-950 transition-colors mb-8 group"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           <span className="font-bold uppercase tracking-widest text-xs">Back to Home</span>
@@ -1305,22 +1305,22 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center px-4 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-4 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-600 text-sm font-medium mb-6">
             <Truck size={14} className="mr-2" /> Exclusive Service
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Monthly Tiffin Service</h1>
-          <p className="text-emerald-100/70 max-w-2xl mx-auto text-lg mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-amber-950 mb-6">Monthly Tiffin Service</h1>
+          <p className="text-amber-800/70 max-w-2xl mx-auto text-lg mb-6">
             Healthy, hygienic, and home-style meals delivered on time. 
-            Available exclusively in <span className="text-white font-bold">Delhi, Faridabad, and Noida</span>.
+            Available exclusively in <span className="text-amber-950 font-bold">Delhi, Faridabad, and Noida</span>.
           </p>
 
           <div className="flex flex-col items-center gap-4 mb-10">
-            <p className="text-emerald-400/80 text-sm font-medium uppercase tracking-widest">We are also available on</p>
+            <p className="text-amber-600/80 text-sm font-medium uppercase tracking-widest">We are also available on</p>
             <a 
               href="https://zomato.onelink.me/xqzv/2eh1vuyw" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 rounded-full hover:bg-white/20 transition-all group"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-amber-200 rounded-full hover:bg-amber-50 transition-all group shadow-sm"
             >
               <img 
                 src="https://i.ibb.co/84NZ3GSF/zomato-logo-zomato-icon-transparent-free-png.webp" 
@@ -1328,7 +1328,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                 className="h-6 w-auto object-contain"
                 referrerPolicy="no-referrer"
               />
-              <span className="text-white font-bold">Order via Zomato</span>
+              <span className="text-amber-950 font-bold">Order via Zomato</span>
             </a>
           </div>
 
@@ -1345,10 +1345,8 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                 onClick={() => setFilter(f.id as any)}
                 className={`px-6 py-2 rounded-full text-sm font-bold transition-all border ${
                   filter === f.id 
-                    ? (f.id === 'non-veg' ? 'bg-amber-500 border-amber-500 text-white shadow-lg shadow-amber-500/20' : 
-                       f.id === 'egg' ? 'bg-yellow-500 border-yellow-500 text-black shadow-lg shadow-yellow-500/20' :
-                       'bg-emerald-500 border-emerald-500 text-white shadow-lg shadow-emerald-500/20')
-                    : 'bg-white/5 border-white/10 text-emerald-100/60 hover:border-white/20'
+                    ? 'bg-amber-600 border-amber-600 text-white shadow-lg shadow-amber-600/20'
+                    : 'bg-white border-amber-200 text-amber-800 hover:border-amber-400'
                 }`}
               >
                 {f.label}
@@ -1367,28 +1365,28 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 whileHover={{ scale: 1.02 }}
-                className={`${plan.color} backdrop-blur-md border rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden flex flex-col`}
+                className={`${plan.color} border rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden flex flex-col shadow-xl`}
               >
-                <div className="absolute top-0 right-0 p-8 opacity-10">
-                  <Utensils size={120} className="text-white" />
+                <div className="absolute top-0 right-0 p-8 opacity-5">
+                  <Utensils size={120} className="text-amber-950" />
                 </div>
                 <div className="relative z-10 flex-1">
                   {plan.popular && (
-                    <div className={`inline-block px-3 py-1 ${plan.id === 'non-veg' ? 'bg-amber-500' : 'bg-emerald-500'} text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-4`}>Popular Choice</div>
+                    <div className="inline-block px-3 py-1 bg-amber-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">Popular Choice</div>
                   )}
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-2xl font-bold text-white">{plan.type} Plan</h3>
+                    <h3 className="text-2xl font-bold text-amber-950">{plan.type} Plan</h3>
                     <DietaryMark type={plan.mark} />
                   </div>
                   <div className="flex items-baseline gap-1 mb-8">
-                    <span className="text-4xl font-bold text-white">₹{plan.price}</span>
-                    <span className="text-emerald-200/60">/ month</span>
+                    <span className="text-4xl font-bold text-amber-950">₹{plan.price}</span>
+                    <span className="text-amber-800/60">/ month</span>
                   </div>
                   
                   <ul className="space-y-4 mb-10">
                     {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-emerald-50 text-sm">
-                        <CheckCircle2 size={18} className={`${plan.id === 'non-veg' ? 'text-amber-400' : plan.id === 'egg' ? 'text-yellow-400' : 'text-emerald-400'} mr-3 shrink-0`} /> {feature}
+                      <li key={idx} className="flex items-center text-amber-900 text-sm">
+                        <CheckCircle2 size={18} className="text-amber-600 mr-3 shrink-0" /> {feature}
                       </li>
                     ))}
                   </ul>
@@ -1397,7 +1395,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                 <div className="relative z-10">
                   <button 
                     onClick={() => setSubscriptionConfig({ type: plan.type, basePrice: plan.price })}
-                    className={`w-full py-4 ${plan.btnColor} rounded-2xl font-bold transition-colors`}
+                    className={`w-full py-4 ${plan.btnColor} rounded-2xl font-bold transition-colors shadow-lg shadow-amber-600/20`}
                   >
                     Subscribe Now
                   </button>
@@ -1407,29 +1405,29 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
           </AnimatePresence>
         </div>
 
-        <div className="mt-16 max-w-3xl mx-auto bg-white/5 rounded-3xl p-8 border border-white/10 text-center">
-          <h4 className="text-white font-bold mb-6">Delivery Information</h4>
-          <div className="grid sm:grid-cols-3 gap-6 text-emerald-100/60 text-sm mb-8">
+        <div className="mt-16 max-w-3xl mx-auto bg-white rounded-3xl p-8 border border-amber-200 text-center shadow-lg">
+          <h4 className="text-amber-950 font-bold mb-6">Delivery Information</h4>
+          <div className="grid sm:grid-cols-3 gap-6 text-amber-800/70 text-sm mb-8">
             <div className="flex flex-col items-center gap-2">
-              <Clock size={16} className="text-emerald-400" />
-              <div className="font-bold text-white">Breakfast</div>
+              <Clock size={16} className="text-amber-600" />
+              <div className="font-bold text-amber-950">Breakfast</div>
               <div>07:00 AM - 10:00 AM</div>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <Clock size={16} className="text-emerald-400" />
-              <div className="font-bold text-white">Lunch</div>
+              <Clock size={16} className="text-amber-600" />
+              <div className="font-bold text-amber-950">Lunch</div>
               <div>12:00 PM - 03:00 PM</div>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <Clock size={16} className="text-emerald-400" />
-              <div className="font-bold text-white">Dinner</div>
+              <Clock size={16} className="text-amber-600" />
+              <div className="font-bold text-amber-950">Dinner</div>
               <div>05:30 PM - 10:00 PM</div>
             </div>
           </div>
-          <p className="text-xs text-emerald-400/60 italic mb-6">
+          <p className="text-xs text-amber-600/70 italic mb-6">
             * Note: Breakfast delivery may be slightly late; Dinner is delivered early.
           </p>
-          <div className="flex items-center justify-center gap-4 text-emerald-100/60 text-sm pt-6 border-t border-white/5">
+          <div className="flex items-center justify-center gap-4 text-amber-800/60 text-sm pt-6 border-t border-amber-100">
             <div className="flex items-center gap-2">
               <MapPin size={16} /> Delhi | Noida | Faridabad
             </div>
@@ -1439,13 +1437,13 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
         {/* Testimonials Section */}
         <div className="mt-24">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">What Our Customers Say</h2>
+            <h2 className="text-3xl font-bold text-amber-950 mb-4">What Our Customers Say</h2>
             <div className="flex justify-center gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} size={20} className="text-yellow-500 fill-yellow-500" />
+                <Star key={star} size={20} className="text-amber-500 fill-amber-500" />
               ))}
             </div>
-            <p className="text-emerald-400 text-sm mt-2 font-medium">4.9/5 Average Rating</p>
+            <p className="text-amber-600 text-sm mt-2 font-medium">4.9/5 Average Rating</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -1475,21 +1473,21 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/5 border border-white/10 p-6 rounded-3xl relative group hover:border-emerald-500/30 transition-all"
+                className="bg-white border border-amber-200 p-6 rounded-3xl relative group hover:border-amber-500/30 transition-all shadow-md"
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={14} className="text-yellow-500 fill-yellow-500" />
+                    <Star key={i} size={14} className="text-amber-500 fill-amber-500" />
                   ))}
                 </div>
-                <p className="text-emerald-100/80 text-sm leading-relaxed mb-6 italic">"{testimonial.text}"</p>
+                <p className="text-amber-900/80 text-sm leading-relaxed mb-6 italic">"{testimonial.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+                  <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 font-bold">
                     {testimonial.name[0]}
                   </div>
                   <div>
-                    <div className="text-white font-bold text-sm">{testimonial.name}</div>
-                    <div className="text-emerald-400/60 text-[10px] uppercase tracking-widest">{testimonial.location}</div>
+                    <div className="text-amber-950 font-bold text-sm">{testimonial.name}</div>
+                    <div className="text-amber-600/60 text-[10px] uppercase tracking-widest">{testimonial.location}</div>
                   </div>
                 </div>
               </motion.div>
@@ -1502,7 +1500,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
 };
 
 const Footer = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
-  <footer className="bg-[#0a0202] border-t border-white/5 pt-20 pb-10">
+  <footer className="bg-amber-950 border-t border-amber-900/20 pt-20 pb-10">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-2">
@@ -1513,24 +1511,24 @@ const Footer = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
               className="h-12 w-auto object-contain"
               referrerPolicy="no-referrer"
             />
-            <div className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-amber-800 bg-clip-text text-transparent">
+            <div className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
               Mithila Catering & Decoration Service
             </div>
           </div>
-          <p className="text-gray-500 max-w-sm mb-8">
+          <p className="text-amber-200/60 max-w-sm mb-8">
             Professional event management and catering services since 2021. We bring high-quality service and authentic flavors to every event across India.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-amber-600 hover:text-white transition-all">
+            <a href="#" className="w-10 h-10 rounded-full bg-amber-900/50 flex items-center justify-center text-amber-400 hover:bg-amber-600 hover:text-white transition-all">
               <Users size={18} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-amber-600 hover:text-white transition-all">
+            <a href="#" className="w-10 h-10 rounded-full bg-amber-900/50 flex items-center justify-center text-amber-400 hover:bg-amber-600 hover:text-white transition-all">
               <Phone size={18} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-amber-600 hover:text-white transition-all">
+            <a href="#" className="w-10 h-10 rounded-full bg-amber-900/50 flex items-center justify-center text-amber-400 hover:bg-amber-600 hover:text-white transition-all">
               <Mail size={18} />
             </a>
-            <a href="https://zomato.onelink.me/xqzv/2eh1vuyw" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#E23744] transition-all overflow-hidden p-2 group">
+            <a href="https://zomato.onelink.me/xqzv/2eh1vuyw" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-amber-900/50 flex items-center justify-center hover:bg-[#E23744] transition-all overflow-hidden p-2 group">
               <img 
                 src="https://i.ibb.co/84NZ3GSF/zomato-logo-zomato-icon-transparent-free-png.webp" 
                 alt="Zomato" 
@@ -1543,7 +1541,7 @@ const Footer = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
         
         <div>
           <h4 className="text-white font-bold mb-6">Quick Links</h4>
-          <ul className="space-y-4 text-gray-500 text-sm">
+          <ul className="space-y-4 text-amber-200/60 text-sm">
             <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }} className="hover:text-white transition-colors">About Us</a></li>
             <li><a href="#services" onClick={(e) => { e.preventDefault(); onNavigate('home'); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-white transition-colors">Services</a></li>
             <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('gallery'); }} className="hover:text-white transition-colors">Event Gallery</a></li>
@@ -1554,7 +1552,7 @@ const Footer = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
 
         <div>
           <h4 className="text-white font-bold mb-6">Contact Info</h4>
-          <ul className="space-y-4 text-gray-500 text-sm">
+          <ul className="space-y-4 text-amber-200/60 text-sm">
             <li className="flex items-center gap-3">
               <Phone size={16} className="text-amber-500" /> +91 9650254164
             </li>
@@ -1568,11 +1566,11 @@ const Footer = ({ onNavigate }: { onNavigate: (page: string) => void }) => (
         </div>
       </div>
       
-      <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-gray-600 text-xs uppercase tracking-widest">
+      <div className="border-t border-amber-900/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-amber-200/40 text-xs uppercase tracking-widest">
           © 2026 Mithila Catering & Decoration Service. All Rights Reserved.
         </p>
-        <p className="text-gray-600 text-xs uppercase tracking-widest">
+        <p className="text-amber-200/40 text-xs uppercase tracking-widest">
           Designed by Walt Designs & Studio
         </p>
       </div>
@@ -1603,20 +1601,20 @@ const LocationPopup = () => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-amber-950/40 backdrop-blur-sm">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="bg-[#1a1405] border border-white/10 p-8 rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
+            className="bg-amber-50 border border-amber-200 p-8 rounded-[2.5rem] max-w-md w-full shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-yellow-500"></div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-amber-600"></div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-amber-600/10 rounded-2xl flex items-center justify-center mb-6 border border-amber-600/20">
-                <MapPin className="text-amber-500" size={32} />
+              <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 border border-amber-200">
+                <MapPin className="text-amber-600" size={32} />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Welcome to Mithila</h3>
-              <p className="text-gray-400 mb-8">Please tell us your event location so we can serve you better.</p>
+              <h3 className="text-2xl font-bold text-amber-950 mb-2">Welcome to Mithila</h3>
+              <p className="text-amber-800/70 mb-8">Please tell us your event location so we can serve you better.</p>
               
               <div className="w-full space-y-4">
                 <input
@@ -1624,7 +1622,7 @@ const LocationPopup = () => {
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="Enter your city/place..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
+                  className="w-full bg-white border border-amber-200 rounded-xl py-4 px-6 text-amber-950 placeholder:text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all"
                   autoFocus
                 />
                 <button
@@ -1683,7 +1681,7 @@ export default function App() {
   }, [currentPage]);
 
   return (
-    <div className="min-h-screen bg-[#1a1405] font-sans selection:bg-amber-500/30">
+    <div className="min-h-screen bg-amber-50 font-sans selection:bg-amber-500/30">
       <WhatsAppButton />
       <LocationPopup />
       <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
