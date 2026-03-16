@@ -189,13 +189,13 @@ const Hero = () => (
         >
           <motion.div 
             animate={{ 
-              backgroundColor: ["rgba(239, 68, 68, 0.1)", "rgba(239, 68, 68, 0.3)", "rgba(239, 68, 68, 0.1)"],
-              borderColor: ["rgba(239, 68, 68, 0.2)", "rgba(239, 68, 68, 0.6)", "rgba(239, 68, 68, 0.2)"]
+              backgroundColor: ["rgba(153, 27, 27, 0.1)", "rgba(153, 27, 27, 0.2)", "rgba(153, 27, 27, 0.1)"],
+              borderColor: ["rgba(153, 27, 27, 0.2)", "rgba(153, 27, 27, 0.4)", "rgba(153, 27, 27, 0.2)"]
             }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="inline-flex items-center px-3 py-1 rounded-full border text-amber-500 text-sm font-medium mb-6"
+            className="inline-flex items-center px-3 py-1 rounded-full border border-red-900/20 text-red-800 text-sm font-medium mb-6"
           >
-            <Star size={14} className="mr-2" /> Serving Excellence Since 2021
+            <Star size={14} className="mr-2 fill-red-800" /> Serving Excellence Since 2021
           </motion.div>
           <h1 className="text-5xl md:text-7xl font-bold text-amber-950 leading-tight mb-6">
             Crafting <span className="text-amber-600">Unforgettable</span> Moments Across India
@@ -1397,7 +1397,7 @@ const TiffinPage = ({ onBack }: { onBack: () => void }) => {
                     onClick={() => setSubscriptionConfig({ type: plan.type, basePrice: plan.price })}
                     className={`w-full py-4 ${plan.btnColor} rounded-2xl font-bold transition-colors shadow-lg shadow-amber-600/20`}
                   >
-                    Subscribe Now
+                    Book Now
                   </button>
                 </div>
               </motion.div>
