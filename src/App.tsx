@@ -23,7 +23,7 @@ import {
   Image as ImageIcon,
   Play
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { getAIPlannerResponse } from './services/geminiService';
 import { Message } from './types';
 
@@ -31,21 +31,28 @@ const Counter = ({ value, duration = 2 }: { value: string, duration?: number }) 
   const [count, setCount] = useState(0);
   const target = parseInt(value.replace(/\D/g, ''));
   const suffix = value.replace(/\d/g, '');
-  const nodeRef = useRef(null);
 
   useEffect(() => {
     let start = 0;
     const end = target;
-    if (start === end) return;
+    if (start === end) {
+      setCount(end);
+      return;
+    }
 
-    let totalMiliseconds = duration * 1000;
-    let incrementTime = (totalMiliseconds / end);
+    const totalMiliseconds = duration * 1000;
+    const incrementTime = Math.max(16, totalMiliseconds / end); // Minimum 16ms (approx 60fps)
+    const step = Math.max(1, Math.ceil(end / (totalMiliseconds / 16)));
 
-    let timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) clearInterval(timer);
-    }, incrementTime);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(start);
+      }
+    }, 16);
 
     return () => clearInterval(timer);
   }, [target, duration]);
